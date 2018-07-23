@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非常可爱的奥运五环</title>
+    <style>
+        .circle{
+            width:200px;
+            height:200px;
+            background:transparent;
+            border:10px solid;
+            border-radius:50%;
+            position: relative;
+        }
+        .circle::after{
+            content:'';
+            width:200px;
+            height:200px;
+            border:10px solid black;
+            border-radius:50%;
+            position:absolute;
+            top:-10px;
+            left:-10px;
+        }
+        .blue{
+            position:relative;
+            border-color:blue;
+        }
+        .blue::after{
+            border-color:blue;
+            z-index:1;
+            border-bottom-color:transparent;
+        }
+        .black{
+            position:absolute;
+            border-color:black;
+            top:0;
+            left:240px;
+        }
+        .black::after{
+            border-color:black;
+            z-index:1;
+            border-left-color:transparent;
+        }
+        .red{
+            position:absolute;
+            border-color:red;
+            top:0;
+            left:470px;
+        }
+        .red::after{
+            border-color:red;
+            z-index:2;
+            border-left-color:transparent;
+        }
+        .yellow{
+            position:absolute;
+            border-color:yellow;
+            top:120px;
+            left:120px;
+        }
+        .yellow::after{
+            border-color:yellow;
+        }
+        .green{
+            position:absolute;
+            border-color:green;
+            top:120px;
+            left:350px;
+        }
+        .green::after{
+            border-color:green;
+            z-index:1;
+            border-top-color:transparent;
+        }
+    </style>
+</head>
+<body>
+   <div class="circle blue"></div>
+   <div class="circle black"></div>
+   <div class="circle red"></div>
+   <div class="circle yellow"></div>
+   <div class="circle green"></div>
+</body>
+</html>
