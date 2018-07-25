@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div{
+            margin:100px auto;
+            width: 400px;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li {
+            width: 123px;
+            height: 30px;
+            margin-right:10px;
+            background-color:grey;
+            color:#ffffff;
+            float: left;
+            line-height: 30px;
+            text-align: center;
+        }
+        ul .selected{
+            background: black;
+        }
+        ul .li3{
+            margin-right:0px;
+        }
+        #div div{
+            width: 400px;
+            height:400px;
+            border-top:1px solid black;
+            position: absolute;
+            left: 0;
+            top:30px;
+        }
+        #div .div1{
+            z-index: 1;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        #div2{
+            background: url("IMG_7154.JPG") ;
+            background-size: 400px 400px ;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <ul>
+            <li class="selected">饮料</li>
+            <li>炸鸡</li>
+            <li >火锅</li>
+        </ul>
+        <div  class="div1"><img src="IMG_7150.JPG" alt=""></div>
+        <div  id="div2">
+            <!--<img src="IMG_7154.JPG" alt="">-->
+        </div>
+        <div ><img src="IMG_7156.JPG" alt=""></div>
+    </div>
+    <script>
+        var ali=document.getElementsByTagName('li');
+        var odiv=document.getElementById('div');
+        var adiv=odiv.getElementsByTagName('div');
+        for(var i=0;i<ali.length;i++){
+            ali[i].xx=i;
+            ali[i].onclick=function () {
+                for(var j=0;j<ali.length;j++) {
+                    ali[j].className=' ';
+                    adiv[j].className=' ';
+                    // ali[j].style.background='grey';
+                    // adiv[j].style.zIndex='0';
+                }
+                this.className='selected';
+                adiv[this.xx].className='div1';
+                // this.style.background='black';
+                // adiv[this.xx].style.zIndex='1';
+                //若是只有一个Div:
+                // odiv.innerHTML=arr[this.index];
+            }
+        }
+    </script>
+</body>
+</html>

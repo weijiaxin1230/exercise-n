@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0 ;
+        }
+        #all{
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid black;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            width: 960px;
+            position: absolute;
+            left: 0;
+            list-style: none;
+        }
+        ul li{
+            float: left;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            background: #000000;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            line-height: 100px;
+        }
+        #all div{
+            float: left;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background:darkgrey;
+            cursor: pointer;
+        }
+        #left{
+            position: absolute;
+            left: 40px;
+            bottom: 10px;
+        }
+        #right{
+            position: absolute;
+            right: 40px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+            <ul id="ul">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+            <div id="left">左</div>
+            <div id="right">右</div>
+    </div>
+    <script>
+        var oAll=document.getElementById('all');
+        var oUl=document.getElementById('ul');
+        var aLi=document.getElementsByTagName('li');
+        var oLeft=document.getElementById('left');
+        var oRight=document.getElementById('right');
+        play1();
+        oLeft.onclick=function () {
+            clearInterval(tid1);
+            clearInterval(tid2);
+            play1();
+        }
+        oRight.onclick=function () {
+            clearInterval(tid1);
+            clearInterval(tid2);
+            play2();
+        }
+        var a=0;
+        var tid1;
+        var tid2;
+        function play1(){
+            tid1=setInterval(function () {
+                if(a==oUl.offsetWidth * 0.5){
+                    a=0;
+                }
+                    a=a+1;
+                    oUl.style.left=-a +'px';
+            },10)
+        }
+        function play2(){
+           tid2=setInterval(function () {
+                if(a==0){
+                    a=oUl.offsetWidth * 0.5;
+                }
+                a=a-1;
+                oUl.style.left=-a +'px';
+            },10)
+        }
+
+        // setInterval(function(){
+        //     var ileft = aLi[0].offsetLeft;
+        //     aLi[0].style.left = ileft + speed +'px';
+        //     if( ileft < -aUl[0].offsetWidth/2){
+        //         aLi[0].style.left = 0;
+        //     }
+        //
+        //     if(ileft > 0){
+        //         aLi[0].style.left = -aLi[0].offsetWidth/2 +'px';
+        //     }
+        //
+        // },10);
+        //
+        // oLeft.onmouseover = oRight.onmouseover = function () {
+        //     if(this == oLeft){
+        //         speed = -2;
+        //     }else{
+        //         speed = 2;
+        //     }
+        // }//老师代码
+    </script>
+</body>
+</html>

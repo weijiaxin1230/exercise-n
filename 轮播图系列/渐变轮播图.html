@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #all{
+            width: 400px;
+            height:400px;
+            margin:100px auto;
+            position: relative;
+        }
+        #all img{
+            width: 400px;
+            height:400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #all .div1 .selected{
+            display: block;
+        }
+        #all ul{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            z-index: 99999;
+        }
+        #all .div2{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            z-index: 99999;
+        }
+        #all ul li,.div2 span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: black;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #all ul .selected{
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="all">
+    <div class="div1">
+        <img class="selected" src="IMG_7150.JPG" alt="">
+        <img src="IMG_7151.JPG" alt="">
+        <img src="IMG_7154.JPG" alt="">
+        <img src="IMG_7156.JPG" alt="">
+    </div>
+    <ul>
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="div2">
+        <span id="last"> &lt </span>
+        <!--<-->
+        <span id="next"> &gt </span>
+        <!--&gt;-->
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oli=document.getElementsByTagName('li');
+    var oImg=document.getElementsByTagName('img');
+    var aLast=document.getElementById('last');
+    var aNext=document.getElementById('next');
+    var aAll=document.getElementById('all');
+    var nowindex=0;
+    var zIndex = 4;
+    for(var i=0;i<oImg.length;i++){
+        oImg[i].style.zIndex = oImg.length - i;
+    }
+    for(var i=0;i<oli.length;i++){
+        oli[i].index=i;
+        oli[i].onmouseover=function () {
+            nowindex=this.index;
+            // for(var j=0;j<oli.length;j++){
+            //     oli[j].className='';
+            //     oImg[j].className='';
+            // }
+            // this.className='selected';
+            // oImg[this.index].className='selected';
+            imgchang(this.index);
+        }
+    }
+    aNext.onclick=function () {
+        nowindex++;
+        if (nowindex==oli.length) {
+            nowindex=0;
+        }
+        // for(var j=0;j<oli.length;j++){
+        //     oli[j].className='';
+        //     oImg[j].className='';
+        // }
+        // oli[nowindex].className='selected';
+        // oImg[nowindex].className='selected';
+        imgchang(nowindex);
+    };
+    aLast.onclick=function () {
+        nowindex--;
+        if (nowindex==-1) {
+            nowindex=oli.length-1;
+        }
+        // for(var j=0;j<oli.length;j++){
+        //     oli[j].className='';
+        //     oImg[j].className='';
+        // }
+        // oli[nowindex].className='selected';
+        // oImg[nowindex].className='selected';
+        imgchang(nowindex);
+    };
+
+    function imgchang(now){
+        for(var j=0;j<oli.length;j++){
+            oli[j].className='';
+            oImg[j].className='';
+        }
+        oli[now].className='selected';
+        oImg[now].className='selected';
+        oImg[now].style.zIndex = ++zIndex;
+        oImg[now].style.opacity = 0;
+        animate(oImg[now],{opacity:100});
+    };
+    //构造函数替代重复代码
+    // var tid=setInterval("aNext.onclick()",2000);
+
+    aAll.onmouseover=function () {
+        clearInterval(tid);
+    };
+    aAll.onmouseout=function () {
+        play();
+    };
+    play();
+    function play(){
+        tid=setInterval(function () {
+            aNext.onclick();
+        },2000)
+    };
+</script>
+</body>
+</html>
