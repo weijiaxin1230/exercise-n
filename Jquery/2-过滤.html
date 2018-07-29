@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>筛选</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width:200px;
+            margin: 100px auto;
+        }
+        li{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="ipt">
+    <ul>
+        <li>xiaomi</li>
+        <li>sanxing</li>
+        <li>huawei</li>
+        <li>iphone8</li>
+        <li>oppo</li>
+        <li>vivo</li>
+    </ul>
+</div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $('#ipt').on('keyup',function(){
+               var xx=$(this).val();
+               $('li').css({
+                   background:'',
+                   display:'none',
+               });
+               if(xx!=0){
+                   $('li:contains('+xx+')').css({
+                       background:'red',
+                       display:'block',
+                   });
+               }
+            })
+        });
+    </script>
+</body>
+</html>
