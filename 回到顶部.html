@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div{
+            width: 35px;
+            height: 74px;
+            background: url("go-top.jpeg") -22px;
+            position: fixed;
+            right:50px;
+            bottom:50px;
+        }
+        div:hover{
+            background-position: -113px;
+        }
+    </style>
+</head>
+<body>
+顶部
+    <div id="div1">
+
+    </div>
+<script>
+    var odiv=document.getElementById("div1");
+    odiv.onclick=function(){
+        odiv.style.backgroundPosition='-200px';
+        var top=document.body.scrollTop||document.documentElement.scrollTop;
+        // console.log(top);
+        var timer=setInterval(function () {
+                scrollTo(0,top*=0.6);
+                console.log(top);
+                if(top<1){
+                    odiv.style.backgroundPosition='-22spx';
+                    clearInterval(timer)
+                    scrollTo(0,0);
+                }
+            },50)
+    }
+</script>
+</body>
+</html>

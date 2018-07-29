@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右键菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        div{
+            width: 120px;
+            border: 1px solid black;
+            position: absolute;
+            left:0;
+            top: 0;
+            display:none;
+        }
+        li{
+            list-style: none;
+            height: 30px;
+            border-bottom:1px solid gray ;
+            line-height: 30px;
+            text-align: center;
+        }
+        li:hover{
+            background: gray;
+        }
+        #last {
+            border-bottom:none;
+        }
+    </style>
+</head>
+<body>
+<div id="meau">
+    <ul>
+        <li id="one">打开</li>
+        <li id="two">下载</li>
+        <li id="three">复制</li>
+        <li id="four">删除</li>
+        <li id="last">属性</li>
+    </ul>
+</div>
+
+<script>
+    var omeau=document.getElementById("meau");
+    document.oncontextmenu=function (e) {
+        omeau.style.display='block';
+        console.log(document.documentElement.offsetHeight);
+        console.log(omeau.offsetHeight);
+        var m=document.documentElement.offsetWidth;
+        var n=omeau.offsetWidth;
+        var m1=document.documentElement.offsetHeight;
+        var n1=omeau.offsetHeight;
+        if(e.clientX>(m-n)){
+            omeau.style.left=(e.clientX-n)+'px';
+        }
+        else {
+            omeau.style.left=e.clientX+'px';
+        }
+        if(e.clientY>(m1-n1)){
+            omeau.style.top=(e.clientY-n1)+'px';
+        }
+        else{
+            omeau.style.top=e.clientY+'px';
+        }
+
+
+
+
+
+        // console.log(e.clientX);
+        // console.log(e.clientY);
+
+        // e.returnValue=flase;
+        // e.preventDefault();
+        return false;
+
+
+    };
+    document.onclick=function (e) {
+        omeau.style.display='none';
+        // e.returnValue=flase;
+        // e.preventDefault();
+        return false;
+    };
+    var ali=document.getElementsByTagName('li');
+    for(var i=0;i<ali.length;i++){
+        ali[i].onmouseover=function () {
+            this.style.background="#ccc";
+        }//滑入
+        ali[i].onmouseout=function () {
+            this.style.background="";
+        }//滑出可代替css中hover
+        ali[i].onclick=function () {
+                alert(this.innerHTML);//获取li中的内容
+        };//点击弹窗口
+    }
+    // var oone=document.getElementById("one");
+    // oone.onclick=function () {
+    // alert("打开");
+    // };
+    // var otwo=document.getElementById("two");
+    // otwo.onclick=function () {
+    //     alert("下载");
+    // };
+    // var othree=document.getElementById("three");
+    // othree.onclick=function () {
+    //     alert("复制");
+    // };
+    // var ofour=document.getElementById("four");
+    // ofour.onclick=function () {
+    //     alert("删除");
+    // };
+    // var olast=document.getElementById("last");
+    // olast.onclick=function () {
+    //     alert("属性");
+    // };
+</script>
+</body>
+</html>

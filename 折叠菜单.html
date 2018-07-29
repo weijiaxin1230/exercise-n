@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #menu{
+            width:200px;
+            margin:100px auto;
+        }
+        #menu li{
+            list-style: none;
+        }
+        #menu a{
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background: black;
+            color: #ffffff;
+        }
+        #menu>li{
+            text-align: center;
+        }
+        #menu .menu1{
+            display: none;
+        }
+        #menu .menu1 li{
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+        }
+        #menu .menu1 li:hover{
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <a href="">管理区</a>
+            <ul class="menu1">
+                <li>000</li>
+                <li>001</li>
+                <li>002</li>
+            </ul>
+        </li>
+        <li>
+            <a href="">交流区</a>
+            <ul class="menu1">
+                <li>000</li>
+                <li>001</li>
+                <li>002</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var aA=document.getElementsByTagName('a');
+        // var aMenu1=document.getElementsByClassName('menu1');//有时classname存在兼容性问题，用下面两句替换
+        var oMenu=document.getElementById('menu');
+        var aMenu1=oMenu.getElementsByTagName('ul');
+        for(var i = 0;i<aA.length;i++ ){
+            aA[i].xx= i;
+            aA[i].onclick=function(){
+                // if(aMenu1[this.xx].style.display=='block'){
+                //     aMenu1[this.xx].style.display='none';
+                // }else{
+                //     aMenu1[this.xx].style.display='block';
+                // }//display获得是内敛样式
+                if(getStyle(aMenu1[this.xx],'display') == 'none'){
+                    aMenu1[this.xx].style.display='block';
+                }else{
+                    aMenu1[this.xx].style.display='none';
+                }
+                function getStyle(elem,prop){
+                    if(elem.currentStyle){
+                        return elem.currentStyle[prop];
+                    }else{
+                        return getComputedStyle(elem,false)[prop];
+                    }
+                }//封装一个函数，解决浏览器兼容性问题
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
