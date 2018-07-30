@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div{
+            float: left;
+            width: 400px;
+            height: 400px;
+            background:url("1.jpg");
+            position: relative;
+            cursor: move;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        #div2{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 400px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+        #div3{
+            width: 800px;
+            height: 800px;
+            background:url("2.jpg");
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div id="div1">
+
+        </div>
+    </div>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+    <script>
+        var oDiv=document.getElementById('div');
+        var oDiv1=document.getElementById('div1');
+        var oDiv2=document.getElementById('div2');
+        var oDiv3=document.getElementById('div3');
+        oDiv.onmouseover=function (e) {
+            oDiv1.style.display = 'block';
+            oDiv2.style.display = 'block';
+            oDiv.onmousemove=function (e) {
+                e=e||window.event;
+                var cleft=e.clientX-oDiv1.offsetWidth/2;
+                var ctop=e.clientY-oDiv1.offsetHeight/2;
+                var xxx=cleft/(oDiv.offsetWidth-oDiv1.offsetWidth);
+                var yyy=ctop/(oDiv.offsetHeight-oDiv1.offsetHeight);
+                var dleft=-(oDiv3.offsetWidth-oDiv2.offsetWidth)*xxx;
+                var dtop=-(oDiv3.offsetHeight-oDiv2.offsetHeight)*yyy;
+                //用比例算出来
+                // var dleft=-(e.clientX-oDiv1.offsetWidth/2)*2;
+                // var dtop=-(e.clientY-oDiv1.offsetHeight/2)*2;
+                if(e.clientX>oDiv.offsetWidth-oDiv1.offsetWidth/2){
+                   cleft=oDiv.offsetWidth-oDiv1.offsetWidth;
+                   dleft=-(oDiv.offsetWidth-oDiv1.offsetWidth)*2;
+                }else if(e.clientX<oDiv1.offsetWidth/2){
+                    cleft=0;
+                    dleft=0;
+                }
+                if(e.clientY>oDiv.offsetHeight-oDiv1.offsetHeight/2){
+                    ctop=oDiv.offsetHeight-oDiv1.offsetHeight;
+                    dtop=-(oDiv.offsetHeight-oDiv1.offsetHeight)*2;
+                }else if(e.clientY<oDiv1.offsetHeight/2){
+                    ctop=0;
+                    dtop=0;
+                }
+                oDiv1.style.left = cleft +'px';
+                oDiv1.style.top = ctop + 'px';
+                oDiv3.style.left = dleft +'px';
+                oDiv3.style.top = dtop + 'px';
+            }
+            oDiv.onmouseout=function () {
+                oDiv1.style.display = 'none';
+                oDiv2.style.display = 'none';
+            }
+
+        }
+    </script>
+</body>
+</html>

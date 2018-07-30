@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        var oDiv=document.getElementById('div');
+        oDiv.onmousedown=function (e) {
+            var xleft=e.clientX-this.offsetLeft;
+            var ytop=e.clientY-this.offsetTop;
+            document.onmousemove=function (e) {
+                var cleft=e.clientX-xleft;
+                var ctop=e.clientY-ytop;
+                if(cleft>document.documentElement.offsetWidth-oDiv.offsetWidth){
+                    cleft=document.documentElement.offsetWidth-oDiv.offsetWidth;
+                }else if(cleft<0){
+                    cleft=0;
+                }
+                if(ctop>window.innerHeight-oDiv.offsetHeight){
+                    ctop=window.innerHeight-oDiv.offsetHeight;
+                }else if(ctop<0){
+                    ctop=0;
+                }
+                oDiv.style.left = cleft +'px';
+                oDiv.style.top = ctop + 'px';
+            }
+            oDiv.onmouseup=function () {
+                document.onmousemove=null;
+            }
+        }
+    </script>
+</body>
+</html>
