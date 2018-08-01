@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框</title>
+    <style>
+        #div{
+            width: 100px;
+            margin: 100px auto;
+        }
+        #text_k{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <div>
+        <button id="big">向下</button>
+        <button id="small">向上</button>
+    </div>
+    <textarea name="" id="text_k" cols="30" rows="10">dsdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</textarea>
+</div>
+<script src="../../../jquery-1.12.4.js"> </script>
+<script>
+    var $text_k=$('#text_k');
+    $('#big').on('click',function(){
+        $text_k.animate({scrollTop :'+=50'},400);
+    })
+
+    $('#small').on('click',function(){
+        if($text_k.height()>50){
+            $text_k.animate({scrollTop :'-=50'},400);
+        }
+    })
+
+</script>
+
+</html>

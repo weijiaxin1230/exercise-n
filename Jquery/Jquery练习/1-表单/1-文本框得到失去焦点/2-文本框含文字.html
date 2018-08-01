@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框</title>
+    <style>
+        input{
+            outline: black;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>个人信息</legend>
+        <div>
+            <p>姓名</p>
+            <input type="text" value="姓名">
+        </div>
+        <div>
+            <p>性别</p>
+            <input type="text" value="女">
+        </div>
+        <div>
+            <p>出生日期</p>
+            <input type="text" value="1998">
+        </div>
+        <div>
+            <p>爱好</p>
+            足球<input type="checkbox" >
+            篮球<input type="checkbox" >
+            排球<input type="checkbox" >
+            羽毛球<input type="checkbox" >
+            乒乓球<input type="checkbox" >
+            橄榄球<input type="checkbox" >
+            其他<input type="text" value="其他运动">
+        </div>
+        <div>
+            <p>详细信息</p>
+            <textarea name="" id="" cols="30" rows="10">详细信息</textarea>
+        </div>
+    </fieldset>
+</form>
+<script src="../../../jquery-1.12.4.js"> </script>
+<script>
+    $(':input').focus(function(){
+        $(this).css({
+            background:'red',
+            border:'2px solid blue'
+        })
+        if(this.value==this.defaultValue)
+        {this.value='';}
+    }).blur(function(){
+        $(this).css({
+            background:'',
+            border:''
+        })
+        if(this.value==''){
+            this.value=this.defaultValue;
+        }else{
+            this.value=this.value;
+        }
+    })
+
+</script>
+</body>
+</html>

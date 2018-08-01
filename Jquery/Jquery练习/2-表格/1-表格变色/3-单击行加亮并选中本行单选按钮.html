@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border:0;
+            /*border-collapse:collapse;*/
+        }
+        td{
+            padding:2px;
+            width:100px;
+            text-align:center;
+        }
+        th{
+            text-align:center;
+            padding:4px;
+        }
+    </style>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr><th></th><th>姓名</th><th>性别</th><th>居住地</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>张山</td><td>男</td><td>浙江宁波</td></tr>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>李四</td><td>女</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>王五</td><td>男</td><td>湖南长沙</td></tr>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>找六</td><td>男</td><td>浙江温州</td></tr>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>Rain</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="choice" value=""/></td>
+        <td>MAXMAN</td><td>女</td><td>浙江杭州</td></tr>
+    </tbody>
+</table>
+<script src="../../../jquery-1.12.4.js"></script>
+<script>
+    $('tbody tr').on('click',function(){
+        $('input').prop('checked',false);
+        $('tr').css('background','');
+        $(this).find('input').prop('checked',true);
+        $(this).css('background','red');
+    })
+
+</script>
+</body>
+</html>

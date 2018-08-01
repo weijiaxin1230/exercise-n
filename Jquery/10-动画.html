@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">显示</button>
+<button id="btn1">隐藏</button>
+<div id="div1">div</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    // $('#btn').on('click',function(){
+    //     $('#div1').toggle(200);
+    // })
+        $('#div1').animate({
+            width:500,
+        },2000,'linear',function(){
+            console.log(1111);
+        }).animate({
+            height:300
+        },2000,'linear',function(){
+            console.log(1111);
+        })
+    })
+    $('#btn1').on('click',function(){
+        // $('#div1').fadeOut(200);
+        // $('#div1').slideUp(200);
+        $(':animated').html('停止了');
+        $('#div1').stop(false,true);//是否清除所有动画        当前动画是否到结尾，
+    })
+    var str='  dddd  dddd   dd';
+    console.log($.trim(str));//清除前后空格
+
+</script>
+</body>
+</html>
