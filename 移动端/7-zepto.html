@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #div1{
+            width:400px;
+            height: 400px;
+            background: #00ff00;
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script src="zepto.js"></script>
+<script src="touch.js"></script>
+<script src="fastclick.js"></script>
+<script>
+    $(function(){
+        // FastClick.attach(document.body);//解决tap点透问题
+        // $('#div1').on('click',function(){
+        //     console.log(1111);
+        // });
+        // $('#div2').on('tap',function(){
+        //     $(this).hide();
+        //     console.log(22222);
+        // })//无延迟的点击事件
+
+        $('#div1').on('swipeLeft',function(){
+            console.log(1111);
+        })//左滑
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web相册</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        #container{
+            height: 100%;
+        }
+        #container div{
+            float: left;
+            width: 24vw;
+            height: 24vw;
+            border-bottom: 4px solid #000;
+            border-right: 4px solid #000;
+            box-sizing: border-box;
+            /*background-image: url("imges/23.JPG");*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #container  img{
+            width: 100%;
+            height: 100%;
+        }
+        #big-img{
+            display: none;
+            height:100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color:#000 ;
+            background-position: center;
+
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <!--<div>-->
+
+    <!--</div>-->
+</div>
+<div id="big-img">
+
+</div>
+<script src="../zepto.js"></script>
+<script src="../touch.js"></script>
+<!--<script src="../jquery-1.12.4.js"></script>-->
+<script>
+    $(function(){
+        var str=' ';
+        var nowIndex=0;
+        for( var i=0;i<24;i++){
+            // $('container').append('<img src="imges/'+(i+1)+'.JPG">');
+            str +='<div><img src="imges/'+(i+1)+'.JPG"></div>';
+            // str+='<div></div>';
+        }
+        $('#container').append(str);
+        // for(var j=0;j<24;j++){
+        //     $('#container:nth-child('+(j+1)+')').css('background-image','url("imges/'+(j+1)+'.JPG")');
+        // }
+        $('#container').on('click','div',function(){
+            $('#container').hide();
+            nowIndex=$(this).index();
+            $('#big-img').css('background-image','url("imges/'+(nowIndex+1)+'.JPG")').show();
+        });
+        $('#big-img').on('click',function(){;
+            $('#big-img').hide();
+            $('#container').show();
+        });
+        $('#big-img').on('swipeLeft',function(){
+            nowIndex++;
+            if(nowIndex==24){
+                nowIndex=0;
+            }
+            $('#big-img').css('background-image','url("imges/'+(nowIndex+1)+'.JPG")').show();
+        });
+        $('#big-img').on('swipeRight',function(){
+            nowIndex--;
+            if(nowIndex==-1){
+                nowIndex=23;
+            }
+            $('#big-img').css('background-image','url("imges/'+(nowIndex+1)+'.JPG")').show();
+        });
+
+    })
+</script>
+</body>
+</html>
