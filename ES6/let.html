@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+    <li>004</li>
+</ul>
+<script>
+    // 1.var定义变量提升
+    // console.log(a);
+    // var a=11;
+    // a的值为undefined,等价于先定义后赋值
+    // var a;
+    // console.log(a);
+    // a=11;
+    // _______________________________________________________
+    // 2.let定义的变量没有变量提升，不能重复声明，暂时性死区（临时失效区），块级作用域
+    // console.log(a);
+    // let a=11;
+    // a的值会报错,不是undefined,let定义的变量没有变量提升.
+    // let a=1;
+    // let a=2;
+    // 会报错,不能重复声明
+    // ________________________________________________________
+    // 3.局部变量不用Var声明相当于全局变量
+    // function fn(){
+    //     var a=b=1;
+    //     //等价于var a=1;
+    //     //b=1;
+    //     console.log(a);
+    // }
+    // fn();
+    // console.log(a);
+    // console.log(b);
+    // b能输出1，a未定义
+    // ________________________________________________________
+    //4.
+    // var a=2;
+    // function fn(){
+    //     console.log(a);
+    //     var a=1;
+    // }
+    // fn();
+    //a的值为undefined,在fn()内变量提升
+    // ________________________________________________________
+    //5.
+    // var a=2
+    // function fn(){
+    //     console.log(a);
+    //     let a=1;
+    // }
+    // fn();
+    //会报错，暂时性死区，let没有变量提升，同时在let控制的范围内别的声明都不好使
+    // ________________________________________________________
+    //6.
+    // for(var i=0;i<5;i++){
+    //     console.log(i);
+    // }
+    // console.log(i);
+    //输出0 1 2 3 4 5
+    // for(let i=0;i<5;i++){
+    //     console.log(i);
+    // }
+    // console.log(i);
+    //输出0 1 2 3 4 报错，在let下任何一个单独的{}都是单独的一个作用域（块级作用域）
+    // ________________________________________________________
+    // 7.函数立即调用
+    // (function(){
+    //
+    // })();
+    // var aLi = document.getElementsByTagName('li');
+    //
+    // // for(var i=0;i<aLi.length;i++){
+    // //     (function(index){
+    // //         aLi[index].onclick = function(){
+    // //             console.log(index);
+    // //         }
+    // //     })(i);
+    // // }
+    // for(let i=0;i<aLi.length;i++){
+    //         aLi[i].onclick = function(){
+    //             console.log(i);
+    //         }
+    // }
+    // //内存泄漏 --- 内存溢出
+    //
+    //
+    // //一个外部函数里面声明了一个内部函数，内部函数里面调用了
+    // //外部函数的局部变量，这个时候，局部变量不被释放
+
+
+    //    function f1(){
+    //        var n = 100;
+    //        var f2 = function(){
+    //            console.log(n);
+    //        }
+    ////        return f2;
+    //    }
+    //    var result = f1();
+    //    result();
+
+
+    //函数立即调用
+    //    var f2 = function(index){
+    //        console.log(11111);
+    //    }
+    //
+    //    f2(i);
+    //
+    //    (function(index){
+    //        console.log(11111);
+    //    })(i);
+
+</script>
+</body>
+</html>

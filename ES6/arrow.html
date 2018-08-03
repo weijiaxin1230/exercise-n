@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+    <li>004</li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    // for(var i=0;i<aLi.length;i++){
+    //        aLi[i].onclick = function(){
+    //            // console.log(this.innerHTML);
+    //            // setTimeout(function(){
+    //            //     console.log(this.innerHTML);
+    //            // },1000);
+    //            // 匿名函数:function（）{中的this指向window}
+    //            //解决办法1
+    //            // var that=this;
+    //            // setTimeout(function(){
+    //            //     console.log(that.innerHTML);
+    //            // },1000);
+    //            // 解决办法2
+    //            // setTimeout(()=>{
+    //            //     console.log(this.innerHTML);
+    //            // },1000);
+    //            //箭头函数里面的this是定义时指向
+    //            // 也可以理解为箭头函数本身没有this去上一层找即ali
+    //        }
+    //    }
+    //箭头函数里面的this是定义时指向
+    //普通函数里面的this是运行时指向
+    //______________________________________________________
+
+    // var fn = (a,b) => {
+    //     console.log(a, b);
+    // };
+    // fn(1,2);
+    // var fn = a => console.log(a);
+    // fn(1);
+    // 箭头函数定义时若只有一个参数()可以省略，若只有一条语句{}可以省略
+    //______________________________________________________
+
+    // function fn() {
+    //     // console.log(0);
+    //     console.log(arguments[0]);
+    //     //arguments[0],没有参数的函数也能传值
+    // }
+    // fn(1);
+    // //但是箭头函数中没有arguments
+    //______________________________________________________
+    // function User() {
+    //    this.name ='zs';
+    // }
+    // var User = ()=>{
+    //     this.name = 'zx';
+    // }
+    //箭头函数不会自动生成构造函数,不能调用
+    // var u = new User();
+    // console.log(u.name);
+    //______________________________________________________
+    // var obj = {
+    //     name:'zs',
+    //     age:12,
+    //     // say:function(){
+    //     //     console.log(this.age);
+    //     // }
+    //     say:()=>{
+    //        console.log(this.age);
+    //        //此时this指向window
+    //     }
+    // }
+    // obj.say();
+
+</script>
+</body>
+</html>

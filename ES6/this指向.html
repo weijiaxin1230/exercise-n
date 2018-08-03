@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //this指向
+    //1.
+    function fn(a,b){
+        console.log(this);
+        console.log(a,b);
+    }
+    fn();
+    // this还是window
+    //________________________________________________________
+    var o={
+        name:'zs'
+    }
+    // fn.call(o);
+    // fn.call(o,3);
+    //同时改变This指向和传参数
+    // 通过call方法定义一个O改变此时的this指向,此时输出name:'zs'
+    fn.apply(o,[1,2]);//也可以改变This指向，同时数组内为函数的参数
+    fn.bind(o);//改变this指向，但不调用函数
+    // 调用方法
+    fn.bind(o,1,2)();
+    // fn.bind(o,1,2)，不能用数组
+    // var f=fn.bind(o);
+    // f(1,2);调用的同时传参
+</script>
+</body>
+</html>
