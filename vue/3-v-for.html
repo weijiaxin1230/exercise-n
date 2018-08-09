@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--<li v-for="(val,index) in arr">-->
+            <!--{{val}},{{index}}-->
+        <!--</li>-->
+        <!--<li v-for="i in 3">-->
+            <!--{{i}}-->
+        <!--</li>-->
+
+        <li v-for="(val,key,index) in obj">
+            {{key}} {{val}} {{index}}
+        </li>
+        <li v-for="(val,index) in arr1">
+            姓名:{{val.name}},年龄:{{val.age}}
+        </li>
+        <!--<li v-for="(val,index) in sortarr1">-->
+            <!--姓名:{{val.name}},年龄:{{val.age}}-->
+        <!--</li>-->
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            msg:'hello world',
+            arr:[11111,22222,33333,4444,5555,],
+            arr1:[{
+                name:'zs',
+                age:22
+            },{
+                name:'lisi',
+                age:15
+            },{
+                name:'wx',
+                age:20
+            }],
+            obj:{
+                name:'zs',
+                age:13,
+                height:168,
+            }
+        },
+        computed:{
+            sortarr1(){
+                return this.arr1.sort(function(a,b){
+                    return a.age-b.age;
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

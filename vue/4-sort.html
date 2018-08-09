@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr=[1,6,2,9,13,5,7];
+    console.log(arr.sort());//按首字母排序
+    arr.sort(function(a,b){
+        return a-b;//正序
+        // return b-a;//逆序
+    });
+    console.log(arr);
+</script>
+</body>
+</html>

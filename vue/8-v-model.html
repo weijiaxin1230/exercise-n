@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .font{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="fn">点击</button>
+    <!--<div id="div1" :class="{red:isRed,font:isFont}">hahahahahaha</div>-->
+    <!--<div id="div1" :class="classObj">hahahahahaha</div>-->
+    <!--<div id="div1" :class="[classA,classB]">hahahahahaha</div>-->
+    <!--<div id="div1" :style="{background:style1,'font-size':style2}">hahahahahaha</div>-->
+    <!--<div id="div1" :style="[styleA,styleB]">hahahahahaha</div>-->
+    <div id="div1" :style="styleObj">hahahahahaha</div>
+
+
+
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            isRed:true,
+            isFont:true,
+            classObj:{
+                red:true,
+                font:true
+            },
+            classA:'red',
+            classB:'font',
+            style1:'red',
+            style2:'40px',
+            styleA:{
+                background:'#ff0000',
+            },
+            styleB:{
+                'font-size':'20px',
+            },
+            styleObj:{
+                background:'#00ff00',
+                'font-size':'20px',
+            }
+        },
+        methods:{
+            fn(){
+                this.isRed=!this.isRed;
+            }
+        },
+    })
+</script>
+</body>
+</html>
