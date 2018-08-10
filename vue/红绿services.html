@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #app{
+            width: 300px;
+            margin: 0 auto;
+            border-bottom:2px solid black;
+         }
+        h1{
+            text-align: center;
+        }
+        li{
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 20px;
+            background: #00ff00;
+        }
+        span{
+            margin-right:10px;
+            float: right;
+        }
+        .red{
+            background: red;
+        }
+        #left{
+            margin-left: 10px;
+            float: left;
+        }
+        #right{
+            margin-right:10px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<h1>services</h1>
+<div id="app">
+    <ul>
+        <li @click="fun(index)" :class="{red:(val.s)}" v-for="(val,index) in arr1">
+            <div id="left">{{val.m}}</div>
+            <div id="right">{{val.z}}</div>
+            <!--{{index}}-->
+        </li>
+    </ul>
+    <hr>
+    total:<span>{{msg}}</span>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            arr1:[
+                {
+                    m:'aaa',
+                    z:234,
+                    s:false,
+                },
+                {
+                    m:'bbb',
+                    z:927,
+                    s:false,
+                },
+                {
+                    m:'ccc',
+                    z:247,
+                    s:false,
+                },
+                {
+                    m:'ddd',
+                    z:316,
+                    s:false,
+                },
+                {
+                    m:'eee',
+                    z:532,
+                    s:false,
+                },
+            ],
+            msg:0,
+
+        },
+        methods:{
+          fun(index){
+              // console.log(this.arr1[index].m,this.arr1[index].z,this.arr1[index].s);
+              this.arr1[index].s=!this.arr1[index].s;
+              if(this.arr1[index].s==true){
+                  this.msg+=this.arr1[index].z;
+              }else{
+                  this.msg-=this.arr1[index].z;
+              }
+              // console.log(this.arr1[index].s);
+          },
+          // fun(val){
+          //     val.s=!val.s;
+          // }//可以将整个对象传过来，或者在@click="val.s=!val.s;"直接标注，不用调用方法
+          //   total(){
+          //     let sum=0;
+          //     this.arr1.forEach(function(elem,index){
+          //         if(elem.s){
+          //             sum+=elem.z;
+          //         }
+          //     });
+          //       return sum;
+          //   }
+
+        }
+    })
+</script>
+</body>
+</html>

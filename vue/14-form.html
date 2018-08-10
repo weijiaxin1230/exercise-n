@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<input type="text" v-model="val">
+<input type="radio" v-model="sex" value="nv">女
+<input type="radio" v-model="sex" value="nan">男
+    <input type="checkbox" v-model="sport" value="baskball">篮球
+    <input type="checkbox" v-model="sport" value="football">足球
+    <input type="checkbox" v-model="sport" value="volleyball">排球
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            val:'点击输入',
+            sex:'',
+            sport:[],
+        }
+    })
+</script>
+</body>
+</html>
