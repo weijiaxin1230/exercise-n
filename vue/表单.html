@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            background: #ccc;
+        }
+        .title{
+            height: 40px;
+            background: pink;
+            line-height: 40px;
+        }
+        .close{
+            float: right;
+            line-height: 40px;
+        }
+        .content{
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="fn1">登录</button>
+    <button @click="fn2">注册</button>
+    <demo title="登录" v-show="isDshow"  @fclose="close">
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="password">
+        <br>
+        <input type="submit">
+    </demo>
+    <demo title="注册" v-show="isZshow"  @fclose="close">
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="password">
+        <br>
+        邮箱是：<input type="text">
+        <br>
+        <input type="submit"><input type="reset">
+        </my-dialog>
+    </demo>
+</div>
+<script type="text/x-template" id="temp">
+    <div id="box">
+        <div class="title">
+            <span>{{title}}</span>
+            <span class="close" @click="$emit('fclose')">[X]</span>
+        </div>
+        <div class="content">
+            <slot>
+                <!--用户名：<input type="text">-->
+                <!--<br>-->
+                <!--密码是：<input type="password">-->
+            </slot>
+        </div>
+    </div>
+</script>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            isDshow:false,
+            isZshow:false,
+        },
+        methods:{
+            fn1(){
+                this.isDshow=true;
+                this.isZshow=false;
+            },
+            fn2(){
+                this.isZshow=true;
+                this.isDshow=false;
+            },
+            close(){
+                this.isDshow=false;
+                this.isZshow=false;
+            }
+        },
+        components:{
+            demo:{
+                template:'#temp',
+                props:['title'],
+            }
+        }
+    })
+</script>
+</body>
+</html>

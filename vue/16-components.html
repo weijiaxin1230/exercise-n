@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <demo :x-x="x1" :yy="y1" zz="zzzzzz">
+        <p slot="p">pppppp</p>
+        <p slot="p1">p1p1p1pp1p</p>
+    </demo>
+</div>
+<!--<div id="app1">-->
+    <!--<demo></demo>-->
+<!--</div>-->
+<script type="text/x-template" id="temp">
+    <div>
+        {{xX}}
+        <h1>{{yy}}</h1>
+        <slot name="p">
+            <p>pppp</p>
+        </slot>
+        {{zz}}
+        <slot name="p1">
+            <p>p2p2p2p2</p>
+        </slot>
+    </div>
+</script>
+<script src="vue.js"></script>
+<script>
+    // Vue.component('demo',{
+    //     template:"<div> ddddddddd<h1>hhhhhhh</h1></div>"
+    // });//全局组件
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'xx',
+            x1:124,
+            y1:'yyyyy',
+            z1:'zzz'
+        },
+        components:{
+          demo:{
+              template:"#temp",
+              props:['xX','yy','zz']
+          }
+        }//局部的组件
+    });
+    // new Vue({
+    //     el:'#app1',
+    //     data:{
+    //     }
+    // });
+</script>
+</body>
+</html>
