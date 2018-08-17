@@ -18,10 +18,10 @@
             }
         },
         methods:{
-            changebg(menu){
-                this.bgcolor=menu.bgColor;
-                this.$emit('change',menu);
-            },
+            // changebg(menu){
+            //     this.bgcolor=menu.bgColor;
+            //     this.$emit('change',menu);
+            // },
             changecolor(menu){
                 this.$store.dispatch('changecolor',menu);
             }

@@ -39,6 +39,7 @@
               ],
               // bgcolor:'',
               // title:'电影'
+
           }
       },
       methods:{
