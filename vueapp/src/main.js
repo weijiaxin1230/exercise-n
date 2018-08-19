@@ -4,8 +4,11 @@ import router from './router';
 import store from './store';
 import '@/assets/css/reset.css';
 import '@/assets/js/rem.js';
+import '@/assets/css/vue-swipe.css';
+// import VueTouch from 'vue-touch';
 
 Vue.config.productionTip = false;
+// Vue.use(VueTouch,{name:'v-touch'});
 
 new Vue({
   router,

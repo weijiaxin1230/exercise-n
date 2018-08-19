@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "v-touch": "^1.5.2",
     "vue": "^2.5.17",
     "vue-aplayer": "^1.6.1",
     "vue-router": "^3.0.1",
+    "vue-swipe": "^2.4.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

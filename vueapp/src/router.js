@@ -8,6 +8,7 @@ import Top from './views/movie/Top.vue';
 import Today from './views/movie/Today.vue';
 import Dang from './views/movie/Dang.vue';
 import Moviedetail from './views/movie/Moviedetail.vue';
+import Photodetail from './views/photo/Photodetail.vue';
 
 Vue.use(Router);
 
@@ -54,6 +55,11 @@ export default new Router({
         path: '/moviedetail/:id',
         name: 'moviedetail',
         component:Moviedetail,
-    }
+    },
+      {
+          path: '/Photo/:index',
+          name: 'Photo',
+          component:Photodetail,
+      }
   ],
 });

@@ -13,7 +13,7 @@
   import Cfooter from '@/components/Cfooter.vue';
 
   export default{
-      data(){
+          data(){
           return{
               menulist:[
                   {

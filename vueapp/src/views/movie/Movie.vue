@@ -83,6 +83,9 @@
         },
         components:{
             Movielist,
+        },
+        destroyed(){
+            window.onscroll=null;
         }
     }
 </script>
