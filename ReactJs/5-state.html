@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    //有状态组件
+    class Welcome extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                count:0
+            };
+        };
+        add(){
+            this.setState({
+                count:this.state.count+2
+                })
+        }
+        render(){
+            return <div><button onClick={this.add.bind(this)}>点击</button>{this.props.name}{this.state.count}</div>;
+
+        };
+    }
+
+    ReactDOM.render(
+        <Welcome name="change" description="qianyi">6666</Welcome>
+        // <Welcome name="yi" description="qianyi"/>
+        ,
+        document.getElementById('root')
+    );
+</script>
+</body>
+</html>

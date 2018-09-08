@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Main extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                a:100,
+                b:100,
+                c:200
+            }
+        }
+        add1(){
+            if(this.state.a==0){
+                alert('当前无士兵可用')
+            }
+            else{
+                this.setState({
+                    a:this.state.a-10,
+                    b:this.state.b+10,
+                    c:this.state.c-10,
+                })
+            }
+        }
+        add2(){
+            this.setState({
+                a:this.state.a+10,
+                b:this.state.b-10,
+                c:this.state.c+10,
+            })
+        }
+        render(){
+            return (
+                <div>
+                    <h1>全部士兵数量：{this.state.c}</h1>
+                    <Binga name="a" msg={this.state.a} myadd1={this.add1.bind(this)}></Binga>
+                    <Bingb name="b" msg={this.state.b} myadd2={this.add2.bind(this)}></Bingb>
+
+                </div>
+            )
+        }
+    }
+    class Binga extends React.Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return (
+                <div>
+                    <h2>将军{this.props.name}士兵数量：{this.props.msg}</h2>
+                    <button onClick={this.props.myadd1}>调兵</button>
+                </div>
+            )
+        }
+    }
+    class Bingb extends React.Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return (
+                <div>
+                    <h2>将军{this.props.name}士兵数量：{this.props.msg}</h2>
+                    <button onClick={this.props.myadd2}>调兵</button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Main></Main>,
+        document.getElementById('root')
+    )
+</script>
+
+</body>
+</html>
