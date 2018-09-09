@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #root{
+            width:400px;
+            margin:0 auto;
+            /*text-align: center;*/
+        }
+        h1{
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .body h2 input {
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .btn{
+            float: right;
+            height: 40px;
+            width:100px;
+            text-align: center;
+            line-height: 40px;
+            background: #00ff00;
+        }
+        ul{
+            margin-top: 20px;
+        }
+        li{
+            list-style: none;
+            line-height: 40px;
+            background: #ff0;
+            height: 40px;
+            border:1px solid black;
+        }
+        li  div{
+            margin-left: 10px;
+            float: left;
+        }
+        li button{
+            margin: 10px;
+            float:right;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="browser.min.js"></script>
+<script type="text/babel">
+    class Main extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {
+                list:['吃饭', '睡觉', '打豆豆',],
+                list2:[
+
+                ],
+                msg:{
+                    name:''
+                }
+            }
+        }
+        delete(num){
+            var arr=this.state.list;
+            arr.splice(num,1);
+            console.log(num);
+            this.setState({
+                list:arr
+            })
+        }
+        change(event){
+            this.setState({
+            msg:event.target.value
+            })
+            console.log(this.state.msg)
+        }
+        inchange(){
+            var arr=this.state.list;
+            arr.push(this.state.msg);
+            this.setState({
+                list:arr
+            })
+
+        }
+        render(){
+            return(
+                <div className="body">
+                    <h2>任务：<input type="text" placeholder="安排新的任务吧。。。" onChange={this.change.bind(this)}/> <button className="btn" onClick={this.inchange.bind(this)}>保存任务</button></h2>
+                    <Other mylist={this.state.list} mydelete={this.delete.bind(this)}></Other>
+                    <h2>已完成/{this.state.list.length}全部</h2>
+                </div>
+            )
+        }
+    }
+    class Other extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                list:this.props.mylist
+            }
+        }
+        render(){
+            return(
+                <ul>
+                    {
+                        this.state.list.map((ele,index)=>{
+                            return <li key={ele}>
+                                <div>
+                                    <input type="checkbox"/>{ele}
+                                </div>
+                                <button onClick={()=>{this.props.mydelete(index)}}>删除</button>
+                            </li>
+                        })
+                    }
+                </ul>
+            )
+        }
+    }
+    ReactDOM.render(
+        <div>
+            <h1>todolist</h1>
+            <Main></Main>
+
+        </div>
+        ,
+        document.getElementById('root')
+    );
+</script>
+</body>
+</html>
