@@ -1,0 +1,30 @@
+.am-navbar{
+    background-color: #00bfae;
+    color:#fff;
+}
+.am-navbar-left{
+    flex:none;
+}
+.am-navbar-right{
+    flex:none;
+}
+.am-search{
+    width:100%;
+    background-color: #00bfae;
+}
+.am-search-input{
+    color:#fff;
+    background-color:#989595;
+}
+.am-search-cancel.am-search-cancel-show.am-search-cancel-anim{
+    display: none;
+}
+.sub-title {
+    color: #888;
+    font-size: 14px;
+    padding: 15px 0 9px 15px;
+}
+.not-square-grid .am-grid-icon {
+    width: 40px;
+    height: 60px;
+}
