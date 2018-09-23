@@ -2,10 +2,7 @@
     background-color: #00bfae;
     color:#fff;
 }
-.am-navbar-left{
-    flex:none;
-}
-.am-navbar-right{
+.am-navbar-left,.am-navbar-right{
     flex:none;
 }
 .am-search{
@@ -27,4 +24,37 @@
 .not-square-grid .am-grid-icon {
     width: 40px;
     height: 60px;
+}
+.am-grid.am-grid-square .am-grid-item .am-grid-item-inner-content .am-grid-icon{
+    width: 63%!important;
+}
+.am-flexbox-item div{
+    width: 100%;
+    height: 50%;
+}
+.am-flexbox-item-img1{
+    color:rgb(68, 145, 48);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.am-flexbox-item-img2{
+    color:#ed5c43;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.am-flexbox-item-img3{
+    color:#d4237a;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.am-flexbox-item div p{
+    text-align: center;
+}
+.am-flexbox-item-img img{
+    width:30vw;
+    height: 30vw;
+    text-align: center;
 }
